@@ -100,12 +100,14 @@ def examen():
     print('-' * 124)
     option = input('- ')
     if option.lower() == ('oui') or ('Oui'):
-        #passerExamen()
+        print("test")
     elif option.lower() == ('non') or ('Non'):
-        #skipExamen()
+        print("test2")
     while option.lower() not in ['oui', 'Oui' 'non', 'Non']:
-            option = input("- ")
+        option = input("- ")
         if option.lower() == ('oui') or ('Oui'):
-            #passerExamen()
+            print("test")
         elif option.lower() == ('non') or ('Non'):
-            #skipExamen()
+            print("test2")
+        
+mainMenu()
