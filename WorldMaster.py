@@ -19,7 +19,7 @@ player1 = player()
 ### SETUP THE MAIN MENU OPTIONS
 
 def mainMenuOptions():
-    option = input('- ')
+    option = input('-> ')
     if option.lower() == ('Play'):
         playGame()
     elif option.lower() == ('Load'):
@@ -42,9 +42,14 @@ def mainMenuOptions():
 
 def mainMenu():
     os.system('clear')
-    print('-' * 124)
-    print('- Bienvenue dans Worldmaster : le jeu où le monde est à vos pieds.  -')
-    print("-      Mais avant de se retrouver sur le trône, il faudra faire les bons choix...     -")
+    print('======================================================================================')
+    print('=          Bienvenue dans Worldmaster : le jeu où le monde est à vos pieds.          =')
+    print('=     Mais avant de se retrouver sur le trône, il faudra faire les bons choix...     =')
+    print('======================================================================================')
+    print('                                      .:Play:.                                        ')
+    print('                                      .:Load:.                                        ')
+    print('                                      .:About:.                                       ')
+    print('                                      .:Leave:.                                       ')
     mainMenuOptions()		
 
 ### LOAD PREVIOUS GAME BACKUP  
@@ -56,13 +61,14 @@ def loadGame():
 ### ABOUT THE GAME (TUTO, CREDITS...)
 
 def about():
-    print('-' * 124)
-    print('-          How to play :         -')
-    print('-                   -')
-    print('-          Credits :          -')
-    print('-          This game was created by Kylian Brun and Noé Bocquet          -')
-    print('-          A special thanks to our Teacher LoÏc Janin who who accompanied us in this adventure !          -')
-    print('-' * 124)
+    print('======================================================================================')
+    print('=                                    How to play :                                   =')
+    print('=                                                                                    =')
+    print('=                                      Credits :                                     =')
+    print('=                This game was created by Kylian Brun and Noé Bocquet                =')
+    print('=                    A special thanks to our Teacher LoÏc Janin who                  =')
+    print('=                           accompanied us in this adventure !                       =')
+    print('======================================================================================')
     mainMenu()
 
 ### LEAVE THE GAME
@@ -73,23 +79,30 @@ def leaveGame():
 ### GAMEPLAY
 
 def playGame():
-    print('-' * 124) 
-    print("-          #todo date 2021, vous naissez sur la planète Erret, dans le pays de Verland.          -")
-    print("-          Dès votre naissance, vous cherchez déjà à décider et choisissez votre prénom :          -")
-    print("-          Votre enfance est plutôt atypique, fils de mierfer...euh de fermier, vous êtes passionné de politique.          -")
-    print("-          Vous n'avez qu'un objectif dans la ive : devenir président de votre magnifique pays, et plus tard gouverner Erret.          -")
-    print("-          Après de brillants résultats au llègeco et au céely, vous rejoignez la meilleure école de Verland, l'élite du pays.          -")
-    print("-          L'heure de votre examen est maintenant venue, le diplôme final est la clé. Il faut absolument réussir l'examen.          -")
-    print('-' * 124)
+    print('======================================================================================') 
+    print('=       20/02/2002, vous naissez sur la planète Erret, dans le pays de Verland.      =')
+    print('=   Dès votre naissance, vous cherchez déjà à décider et choisissez votre prénom :   =')
+    print("=         Votre enfance est plutôt atypique, fils de mierfer...euh de fermier,       =")
+    print('=                          vous êtes passionné de politique.                         =')
+    print("=            Vous n'avez qu'un objectif dans la ive : devenir président              =")
+    print('=               de votre magnifique pays, et plus tard gouverner Erret.              =')
+    print("=                 Après de brillants résultats au llègeco et au céely,               =")
+    print("=            vous rejoignez la meilleure école de Verland, l'élite du pays.          =")
+    print("-      L'heure de votre examen est maintenant venue, le diplôme final est la clé.    =")
+    print("=                        Il faut absolument réussir l'examen.                        =")
+    print('======================================================================================')
     examen()
-    print('-' * 124)
-    print("-          Vous êtes enfin au gouvernement, vous vous approchez peu à peu de votre ojectif.          -")  
-    print("-          Tout se passe bien à votre poste mais votre rêve depuis tipeu, c'est de devenir président...           -")   
-    print("-          Il faut donc que les choses s'accélèrent.          -")
-    print('-' * 124)
-    print("-          Un beau jour, quelqu'un vous contacte et vous fait une proposition : c'est le pays ennemi, Landver.          -")
-    print("-          Il vous propose de s'allier avec lui en vous promettant vous donner des informations sur Verland qui pourront vous faire monter en grade.          -")
-    print('-' * 124)
+    print('======================================================================================')
+    print("=  Vous êtes enfin au gouvernement, vous vous approchez peu à peu de votre ojectif   =")  
+    print("=              Tout se passe bien à votre poste mais votre rêve depuis tipeu         =") 
+    print("=                              c'est de devenir président...                         =")  
+    print("=                      Il faut donc que les choses s'accélèrent.                     =")
+    print('=                                                                                    =')
+    print("=       Un beau jour, quelqu'un vous contacte et vous fait une proposition :         =")
+    print("=                              c'est le pays ennemi, Landver.                        =")
+    print("=          Il vous propose de s'allier avec lui en vous promettant de vous           =")
+    print('=    donner des informations sur Verland qui pourront vous faire monter en grade.    =')
+    print('======================================================================================')
     #Landver()
 
 ### STEP 1 : EXAMEN
@@ -98,13 +111,13 @@ def examen():
     print('-' * 124) 
     print("-          Voulez-vous vous rendre à l'examen ?          -")
     print('-' * 124)
-    option = input('- ')
+    option = input('-> ')
     if option.lower() == ('oui') or ('Oui'):
         print("test")
     elif option.lower() == ('non') or ('Non'):
         print("test2")
     while option.lower() not in ['oui', 'Oui' 'non', 'Non']:
-        option = input("- ")
+        option = input("-> ")
         if option.lower() == ('oui') or ('Oui'):
             print("test")
         elif option.lower() == ('non') or ('Non'):
