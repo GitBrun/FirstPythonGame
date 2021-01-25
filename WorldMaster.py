@@ -19,21 +19,21 @@ player1 = player()
 ### SETUP THE MAIN MENU OPTIONS
 
 def mainMenuOptions():
-    option = input('-> ')
-    if option.lower() == ('Play'):
+    reponse = input('-> ')
+    if reponse == 'Play':
         playGame()
-    elif option.lower() == ('About'):
+    elif reponse == 'About':
         about()
-    elif option.lower() == ('Leave'):
+    elif reponse == 'Leave':
         sys.exit()  
-    while option.lower() not in ['Play', 'About', 'Leave']:
+    while reponse not in ['Play', 'About', 'Leave']:
         print("Commande invalide, veuillez réessayer.")
-        option = input("- ")
-        if option.lower() == ("Play"):
+        reponse = input('-> ')
+        if reponse == 'Play':
             playGame()
-        elif option.lower() == ("About"):
+        elif reponse == 'About':
             about()
-        elif option.lower() == ("Leave"):
+        elif reponse == 'Leave':
             sys.exit()   
 
 def mainMenu():
@@ -81,9 +81,9 @@ def playGame():
     print('======================================================================================')
     examen()
     print('======================================================================================')
-    print("=  Vous êtes enfin au gouvernement, vous vous approchez peu à peu de votre ojectif   =")  
-    print("=              Tout se passe bien à votre poste mais votre rêve depuis tipeu         =") 
-    print("=                              c'est de devenir président...                         =")  
+    print("=  Vous êtes enfin au gouvernement, vous vous approchez peu à peu de votre ojectif   =")
+    print("=              Tout se passe bien à votre poste mais votre rêve depuis tipeu         =")
+    print("=                              c'est de devenir président...                         =")
     print("=                      Il faut donc que les choses s'accélèrent.                     =")
     print('=                                                                                    =')
     print("=       Un beau jour, quelqu'un vous contacte et vous fait une proposition :         =")
@@ -126,7 +126,7 @@ def passerExamen():
             joueur=int(input("Combien d'allumettes prends tu ?")) 
         allumettes=allumettes-joueur
         if allumettes==0:
-            print("Vous avez échoué...")
+            print("Vous avez échoué... Vous repasserez l'examen l'année prochaine.")
             passerExamen()
         else: 
             print("Il reste ", allumettes, "allumettes.")
