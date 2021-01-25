@@ -22,41 +22,29 @@ def mainMenuOptions():
     option = input('-> ')
     if option.lower() == ('Play'):
         playGame()
-    elif option.lower() == ('Load'):
-        loadGame()
     elif option.lower() == ('About'):
         about()
     elif option.lower() == ('Leave'):
         sys.exit()  
-    while option.lower() not in ['Play', 'Load' 'About', 'Leave']:
+    while option.lower() not in ['Play', 'About', 'Leave']:
         print("Commande invalide, veuillez réessayer.")
         option = input("- ")
         if option.lower() == ("Play"):
             playGame()
-        elif option.lower() == ("Load"):
-            loadGame()
         elif option.lower() == ("About"):
             about()
         elif option.lower() == ("Leave"):
             sys.exit()   
 
 def mainMenu():
-    os.system('clear')
     print('======================================================================================')
     print('=          Bienvenue dans Worldmaster : le jeu où le monde est à vos pieds.          =')
     print('=     Mais avant de se retrouver sur le trône, il faudra faire les bons choix...     =')
     print('======================================================================================')
     print('                                      .:Play:.                                        ')
-    print('                                      .:Load:.                                        ')
     print('                                      .:About:.                                       ')
     print('                                      .:Leave:.                                       ')
     mainMenuOptions()		
-
-### LOAD PREVIOUS GAME BACKUP  
-
-def loadGame():
-  #todo charger une sauvegarde
-    playGame()
 
 ### ABOUT THE GAME (TUTO, CREDITS...)
 
@@ -108,19 +96,63 @@ def playGame():
 ### STEP 1 : EXAMEN
 
 def examen():
-    print('-' * 124) 
-    print("-          Voulez-vous vous rendre à l'examen ?          -")
-    print('-' * 124)
+    print('======================================================================================')
+    print("=                       Voulez-vous vous rendre à l'examen ?                         =")
+    print('======================================================================================')
     option = input('-> ')
     if option.lower() == ('oui') or ('Oui'):
-        print("test")
+        passerExamen()
     elif option.lower() == ('non') or ('Non'):
-        print("test2")
+        skipExamen()
     while option.lower() not in ['oui', 'Oui' 'non', 'Non']:
-        option = input("-> ")
+        print("Commande invalide, veuillez réessayer.")
         if option.lower() == ('oui') or ('Oui'):
-            print("test")
+            passerExamen()
         elif option.lower() == ('non') or ('Non'):
-            print("test2")
+            skipExamen()
+
+def passerExamen():
+    print('======================================================================================')
+    print("=         L'examen est un jeu des allumettes, le principe est très simple :          =")
+    print("=  Il y a 21 allumettes, vous pouvez prendre à tour de rôle 1, 2 ou 3 allummettes.   =")
+    print("=               Si vous prenez la dernière allumette, vous échouez.                  =")
+    print("=                Vous jouerez contre Master, un joueur expérimenté                   =")
+    print("=                                 Bonne chance!                                      =")
+    print('======================================================================================')
+    allumettes=21
+    while allumettes>0:
+        joueur=-1
+        while joueur<1 or joueur>3 or joueur>allumettes:
+            joueur=int(input("Combien d'allumettes prends tu ?")) 
+        allumettes=allumettes-joueur
+        if allumettes==0:
+            print("Vous avez échoué...")
+            passerExamen()
+        else: 
+            print("Il reste ", allumettes, "allumettes.")
+            if allumettes%4==3:
+                master=2
+            elif allumettes%4==2:
+                master=1
+            elif allumettes%4==0:
+                master=3
+            else:
+                master=1
+            print("master prends ", master, "allumettes.")
+            allumettes=allumettes-master
+            print("il en reste ", allumettes)
+            if allumettes==0:
+                print("Félicitations, vous avez passé l'examen, vous pouvez accéder au gouvernement !")
+    
+
+def skipExamen():
+    print('======================================================================================')
+    print("=           En sortant de l'école, vous rencontrez un homme assez louche,            =")
+    print("=    après vous avoir regardé, il vous interpelle et vous commencez à discuter.      =")
+    print("=            Vous parlez politique et il aime votre vision. Étant député,            =")
+    print("=         il vous propose directement de le rejoindre dans le gouvernement...        =")
+    print('======================================================================================')
         
 mainMenu()
+
+
