@@ -96,24 +96,24 @@ def playGame():
     print('======================================================================================')
     print('Entrez votre prénom : ')
     nomJoueur = input('-> ')
-    print('======================================================================================')
-    print('=                  Votre enfance est plutôt atypique,', nomJoueur)                    
-    print('=        fils de mierfer...euh de fermier,  vous êtes passionné de politique         =')
-    print('=            Vous n\'avez qu\'un objectif dans la ive : devenir président            =')
-    print('=               de votre magnifique pays, et plus tard gouverner Erret.              =')
-    print('=                 Après de brillants résultats au llègeco et au céely,               =')
-    print('=            vous rejoignez la meilleure école de Verland, l\'élite du pays.         =')
-    print('-     L\'heure de votre examen est maintenant venue, le diplôme final est la clé.    =')
-    print('=                       Il faut absolument réussir l\'examen.                        =')
-    print('======================================================================================')
+    print("Votre enfance est plutôt atypique,",nomJoueur, "fils de mierfer...euh de fermier, vous êtes passionné de politique")
+    time.sleep(0.05)  
+    print('Vous n\'avez qu\'un objectif dans la ive : devenir président de votre magnifique pays, et plus tard gouverner Erret.')
+    time.sleep(0.50)  
+    print('Après de brillants résultats au llègeco et au céely, vous rejoignez la meilleure école de Verland, l\'élite du pays.')
+    time.sleep(0.50)  
+    print('L\'heure de votre examen est maintenant venue, le diplôme final est la clé')
+    time.sleep(0.50)  
+    print('Il faut absolument réussir l\'examen.')
+    time.sleep(0.50)  
     Jeu(nomJoueur)
 
 def Jeu(nomJoueur):
     sante = int()
     sante = 100
 
-    print('Début du jeu')
-    
+        ##    START OF THE GAME    ##
+
     def Examen():
 
         reponse = str()
@@ -167,7 +167,7 @@ def Jeu(nomJoueur):
                 break
     Examen()
 
-    print('2ème étape du jeu')
+    ## 2nd PART OF THE GAME ##
     
     def Proposition(sante):
     
