@@ -1,13 +1,15 @@
 # TO DO :  
-# Shéma 
-# Commenter le code 
-# Nomenclature uniforme dans tout le code
-# Repasser exam si mauvaise rep
+# Implanter nouvelle partie du shéma 
 # Flush texts qui s'écrivent
 # Mise en page
-# Fix about
+# Fix about & leave
+
+# Commenter le code 
+# Nomenclature uniforme dans tout le code
+# Nom joueur
 # Uniforme TU et VOUS
 # oui or Oui
+# play or Play etc
 
 ### IMPORT THE NECESSARY LIBRAIRIES
 
@@ -32,23 +34,23 @@ def about():
     print('======================================================================================')
     print('                                      .:Menu:.                                        ')
     print('                                      .:Play:.                                        ')
-    print('                                      .:Leave:.                                       ')
-#    reponse = input('-> ')
-#    if reponse == 'Menu' or 'menu':
-#        mainMenu()
-#    elif reponse == 'Play' or 'play':
-#        playGame()
-#    elif reponse == 'Leave' or 'leave':
-#        sys.exit()  
-#    while reponse not in ['Play' or 'play' 'About' or 'about' or 'Leave' or 'leave']:
-#        print("Commande invalide, veuillez réessayer.")
-#        reponse = input('-> ')
-#        if reponse == 'Menu' or 'menu':
-#            mainMenu()
-#        elif reponse == 'Play' or 'play':
-#            playGame()
-#        elif reponse == 'Leave' or 'leave':
-#            sys.exit()   
+    print('                                      .:Leave:.                                       ')   
+    reponse = input('-> ')
+    if reponse == 'Menu':
+        mainMenu()
+    elif reponse == 'Play':
+        playGame()
+    elif reponse == 'Leave':
+        sys.exit()  
+    while reponse not in ['Play', 'About', 'Leave']:
+        print("Commande invalide, veuillez réessayer.")
+        reponse = input('-> ')
+        if reponse == 'Menu':
+            mainMenu()
+        elif reponse == 'Play':
+            playGame()
+        elif reponse == 'Leave':
+            sys.exit()
     
     
 
@@ -61,20 +63,20 @@ def leaveGame():
 
 def mainMenuOptions():
     reponse = input('-> ')
-    if reponse == 'Play' or 'play':
+    if reponse == 'Play':
         playGame()
-    elif reponse == 'About' or 'about':
+    elif reponse == 'About':
         about()
-    elif reponse == 'Leave' or 'leave':
+    elif reponse == 'Leave':
         sys.exit()  
-    while reponse not in ['Play' or 'play', 'About' or 'about', 'Leave' or 'leave']:
+    while reponse not in ['Play', 'About', 'Leave']:
         print("Commande invalide, veuillez réessayer.")
         reponse = input('-> ')
-        if reponse == 'Play' or 'play':
+        if reponse == 'Play':
             playGame()
-        elif reponse == 'About' or 'about':
+        elif reponse == 'About':
             about()
-        elif reponse == 'Leave' or 'leave':
+        elif reponse == 'Leave':
             sys.exit()   
 
 def mainMenu():
@@ -119,7 +121,7 @@ def Jeu(nomJoueur):
         while 1:
             print('Voulez-vous vous rendre à l\'examen ', nomJoueur, ' ?')
             reponse = input('-> ')
-            if reponse == 'oui':
+            if reponse == 'oui' or 'Oui':
                     print('======================================================================================')
                     print('=         L\'examen est un jeu des allumettes, le principe est très simple :         =')
                     print('=  Il y a 20 allumettes, vous pouvez prendre à tour de rôle 1, 2 ou 3 allummettes.   =')
@@ -131,7 +133,7 @@ def Jeu(nomJoueur):
                     while allumettes>0:
                         joueur=-1
                         while joueur<1 or joueur>3 or joueur>allumettes:
-                            joueur=int(input('Combien d\'allumettes prends tu ', nomJoueur, ' ?')) 
+                            joueur=int(input('Combien d\'allumettes prends tu ?')) 
                         allumettes=allumettes-joueur
                         if allumettes==0:
                             print('Vous avez échoué... Vous repasserez l\'examen l\'année prochaine.')
@@ -152,7 +154,7 @@ def Jeu(nomJoueur):
                             if allumettes==0:
                                 print('Félicitations, vous avez passé l\'examen, vous pouvez accéder au gouvernement !')
                                 print('Bravo, Vous obtenez votre diplôme, gardez-le, il pourra vous aider pour la suite.')
-            elif reponse == 'non':
+            elif reponse == 'non' or 'Non':
                 print('======================================================================================')
                 print('=          En sortant de l\'école, vous rencontrez un homme assez louche,            =')
                 print('=    après vous avoir regardé, il vous interpelle et vous commencez à discuter.      =')
