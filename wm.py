@@ -96,10 +96,16 @@ def playGame():
     print('======================================================================================')
     print('Entrez votre prénom : ')
     nomJoueur = input('-> ')
-    print("Votre enfance est plutôt atypique,",nomJoueur, "fils de mierfer...euh de fermier, vous êtes passionné de politique")
-    time.sleep(0.05)  
-    print('Vous n\'avez qu\'un objectif dans la ive : devenir président de votre magnifique pays, et plus tard gouverner Erret.')
-    time.sleep(0.50)  
+    words = "Votre enfance est plutôt atypique,", nomJoueur, " fils de mierfer...euh de fermier, vous êtes passionné de politique"
+    for char in words:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        time.sleep(0.2)  
+    words2 = "Vous n\'avez qu\'un objectif dans la ive : devenir président de votre magnifique pays, et plus tard gouverner Erret."
+    for char in words2:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        time.sleep(0.2)
     print('Après de brillants résultats au llègeco et au céely, vous rejoignez la meilleure école de Verland, l\'élite du pays.')
     time.sleep(0.50)  
     print('L\'heure de votre examen est maintenant venue, le diplôme final est la clé')
