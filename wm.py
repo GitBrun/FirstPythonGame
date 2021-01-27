@@ -120,6 +120,7 @@ def Jeu(nomJoueur):
 
         while 1:
             print('Voulez-vous vous rendre à l\'examen ', nomJoueur, ' ?')
+            print('Oui ou Non')
             reponse = input('-> ')
             if reponse == 'oui' or 'Oui':
                     print('======================================================================================')
@@ -155,12 +156,8 @@ def Jeu(nomJoueur):
                                 print('Félicitations, vous avez passé l\'examen, vous pouvez accéder au gouvernement !')
                                 print('Bravo, Vous obtenez votre diplôme, gardez-le, il pourra vous aider pour la suite.')
             elif reponse == 'non' or 'Non':
-                print('======================================================================================')
-                print('=          En sortant de l\'école, vous rencontrez un homme assez louche,            =')
-                print('=    après vous avoir regardé, il vous interpelle et vous commencez à discuter.      =')
-                print('=            Vous parlez politique et il aime votre vision. Étant député,            =')
-                print('=         il vous propose directement de le rejoindre dans le gouvernement...        =')
-                print('======================================================================================')
+                print('En sortant de l\'école, vous rencontrez un homme assez louche, après vous avoir regardé, il vous interpelle et vous commencez à discuter.')
+                print('Vous parlez politique et il aime votre vision. Étant député, il vous propose directement de le rejoindre dans le gouvernement...')
             else:
                 print('Erreur: répondez par oui ou non.')
             if reponse == 'oui' or reponse == 'non':
