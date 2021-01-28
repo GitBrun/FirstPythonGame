@@ -1,15 +1,3 @@
-# TO DO :  
-# Flush texts qui s'écrivent
-# inventaire
-# Mise en page
-# How to play
-
-# Commenter le code 
-# Nom joueur
-# Uniforme TU et VOUS
-# oui or Oui
-# play or Play etc
-
 ### IMPORTATION DES LIBRAIRIES 
 
 import cmd
@@ -25,10 +13,17 @@ screen_width = 200
 def about():
     print('======================================================================================')
     print('                                                                                      ')
-    textAbout = """How to play :
-    Credits :
-    This game was created by Kylian Brun and Noé Bocquet
-    A special thanks to our Teacher LoÏc Janin who accompanied us in this adventure !""" 
+    textAbout = """Comment jouer :
+Ce jeu est un RPG textuel dont vous êtes le héros, vous allez faire des choix pour avancer dans l'aventure.
+Pour faire ces choix laissez-vous guidez et répondez textuellement dans l'input qui apparaîtra.
+Si votre formulation est invalide, il vous sera expliqué comment répondre.
+Vous pouvez acquérir des objets dans votre inventaire. Vous pourrez les utiliser qu'une seule fois par la suite.
+Vous avez 100 points de vie. En fonction de vos choix, vous pouvez soit en gagner soit en perdre.
+Vous mourrez lorsque vos points de vie sont à 0.
+
+Crédits :
+Ce jau a été pensé et créé par Kylian Brun et Noé Bocquet
+Nous tenons à remercier tout particulièrement notre professeur Loïc Janin qui nous à accompagné dans cette aventure !"""
     for char in textAbout:
         sys.stdout.write(char)
         sys.stdout.flush()
@@ -62,7 +57,7 @@ def about():
 def leaveGame():
     sys.exit()
 
-### SETUP THE MAIN MENU OPTIONS    
+### OPTIONS DU MENU ###
 
 def mainMenuOptions():
     reponse = input('-> ')
@@ -81,7 +76,9 @@ def mainMenuOptions():
         elif reponse == 'About':
             about()
         elif reponse == 'Leave':
-            sys.exit()   
+            sys.exit()
+
+### FENETRE D'ARRIVÉE SUR LE JEU ###
 
 def mainMenu():
     print('======================================================================================')
@@ -99,6 +96,8 @@ def mainMenu():
     print('                                      .:About:.                                       ')
     print('                                      .:Leave:.                                       ')
     mainMenuOptions()
+
+### DÉBUT DU JEU ###
 
 def playGame():
     print('======================================================================================') 
@@ -132,12 +131,17 @@ Il faut absolument réussir l\'examen."""
     print('======================================================================================')
     Jeu(nomJoueur)
 
+### FONCTION GLOBALE DU JEU, CONTIENT LES FONCTIONS QUI CORRESPONDENT A CHAQUE ÉTAPE DU JEU ###
+
 def Jeu(nomJoueur):
+
+    ### INSTARAUTION DES PV ET DE L'INVENTAIRE ###
+
     sante = int()
     sante = 100
     inventaire = ["clés","téléphone"]
 
-        ##    START OF THE GAME    ##
+    ### 1ERE ÉTAPE : L'EXAMEN ###
 
     def Examen(sante, inventaire):
 
@@ -146,6 +150,7 @@ def Jeu(nomJoueur):
         while 1:
             print('                                                                                      ')
             textPrenom2 = "Voulez-vous vous rendre à l\'examen " , nomJoueur, " ?"
+            print('                                                                                      ')
             for char in textPrenom2:
                 sys.stdout.write(char)
                 sys.stdout.flush()
@@ -166,6 +171,9 @@ Bonne chance !"""
                         time.sleep(0.03)
                     print('                                                                                      ')
                     print('======================================================================================')
+
+                    ### JEU DES ALLUMETTES ###
+
                     allumettes=20
                     while allumettes>0:
                         joueur=-1
@@ -208,6 +216,7 @@ Bravo, Vous obtenez votre diplôme, gardez-le, il pourra vous aider pour la suit
                                 print('                                                             ')
                                 print('Vous possédez maintenant dans votre inventaire : ', inventaire)
             elif reponse == 'non' or 'Non':
+                print('                                                                    ')
                 textSkipExam = """En sortant de l\'école, vous rencontrez un homme assez louche, après vous avoir regardé, 
 il vous interpelle et vous commencez à discuter. Vous parlez politique et il aime votre vision.
 Étant député, il vous propose directement de le rejoindre dans le gouvernement..."""
@@ -221,14 +230,14 @@ il vous interpelle et vous commencez à discuter. Vous parlez politique et il ai
                 break
     Examen(sante, inventaire)
 
-    ## 2nd PART OF THE GAME ##
+    ## 2EME ETAPE DU JEU : PROPOSITION D'ALLIANCE ##
     
     def Proposition(sante, inventaire):
     
         degat = int()
         reponse = str()
     
-        degat = 100
+        degat = 50
         print('======================================================================================')
         print('                                                                                      ')
         textProposition = """Vous êtes enfin au gouvernement, vous vous approchez peu à peu de votre ojectif.
@@ -250,19 +259,20 @@ informations sur Verland qui pourront vous faire monter en grade."""
             reponse = input('-> ')
             if reponse == 'oui':
                 print('                                                                                            ')
-                textTrahison = """Trahison, guerre, votre pays vous exécute pour avoir livré des informations au pays ennemi !"""
+                textTrahison = """Trahison, guerre, vous prenez une balle dans la jambe pour avoir livré des informations au pays ennemi !"""
                 print('                                                                                            ')
                 for char in textTrahison:
                     sys.stdout.write(char)
                     sys.stdout.flush()
                     time.sleep(0.03)
                 sante = (sante - degat)
-                print(sante)
-                if sante == 0:
+                print('                                                                                            ')
+                print('Vous perdez', degat, ' points de vie')
+                print('Il vous reste', sante, ' points de vie.')
+                if sante == 50:
                     print('                                                                                            ')
                     print('Vous êtes affaibli...')
                     print('                                                                                            ')
-                    Proposition(sante, inventaire)
             elif reponse == 'non':
                 textMasque = """Vous restez fidèle à votre pays et vous continuez votre carrière !
 Le président vous remercie d\'avoir refusé cette alliance en vous offrant un masque !"""
@@ -271,6 +281,7 @@ Le président vous remercie d\'avoir refusé cette alliance en vous offrant un m
                     sys.stdout.flush()
                     time.sleep(0.03)
                 inventaire.append('masque')
+                print('                                                                                           ')
                 print('Vous possédez maintenant dans votre inventaire : ', inventaire)
             else:
                 print('Erreur: répondez par oui ou non.')
@@ -278,6 +289,8 @@ Le président vous remercie d\'avoir refusé cette alliance en vous offrant un m
                 break
 
     Proposition(sante, inventaire)
+
+    ### 3EME ÉTAPE DU JEU : PRÉSIDENT OU 1ER MINISTRE ###
     
     def Choix(sante):
     
@@ -322,9 +335,11 @@ Quittez vous le lotipac ?"""
                     print('Vous mourrez en allant en voiture à l\'aeroport.')
                     print('                                                                                            ')
                     sante = sante - degat
-                    print(sante)
+                    print('                                                                                            ')
+                    print('Vous perdez', degat, ' points de vie')
+                    print('Il vous reste', sante, ' points de vie.')
+                    print('                                                                                            ')
                     if sante == 0:
-                        print('                                                                                            ')
                         print('Vous avez perdu...')
                         print('                                                                                            ')
                         mainMenu()
@@ -334,7 +349,10 @@ Quittez vous le lotipac ?"""
                     print('Vous mourrez submergé par la foule.')
                     print('                                                                                            ')
                     sante = sante - degat
-                    print(sante)
+                    print('                                                                                            ')
+                    print('Vous perdez', degat, ' points de vie')
+                    print('Il vous reste', sante, ' points de vie.')
+                    print('                                                                                            ')
                     if sante == 0:
                         print('Vous avez perdu...')
                         print('                                                                                            ')
@@ -347,6 +365,8 @@ Quittez vous le lotipac ?"""
                 break
 
     Choix(sante)
+
+    ### 4EME ÉTAPE DU JEU : ARRIVÉE DE L'ÉPIDÉMIE ###
     
     def Epidemie(sante, inventaire):
 
@@ -376,7 +396,9 @@ Comment allez-vous gérer la crise ?"""
                 print('                                                                                            ')
                 print('Vous prenez des mesures sanitaires pour limiter la crise. Le peuple vous est reconaissant.')
                 print('                                                                                            ')
-                print(sante)
+                print('Vous gagnez', regen, ' points de vie')
+                print('Il vous reste', sante, ' points de vie.')
+                print('                                                                                            ')
             elif reponse == 'fuir':
                 if 'masque' in inventaire :
                     print('                                                                                            ')
@@ -393,6 +415,8 @@ Comment allez-vous gérer la crise ?"""
                         break
                     elif reponse == 'non':
                         sante = sante - degat
+                        print('Vous perdez', degat, ' points de vie')
+                        print('Il vous reste', sante, ' points de vie.')
                         print('                                                                                            ')
                         print('Vous mourrez du DIVOC91 dans l\'avion')
                         print('                                                                                            ')
@@ -405,6 +429,9 @@ Comment allez-vous gérer la crise ?"""
                         print('Erreur: répondez par oui ou non.')
                 else:
                     sante = sante - degat
+                    print('                                                                                      ')
+                    print('Vous perdez', degat, ' points de vie')
+                    print('Il vous reste', sante, ' points de vie.')
                     print('                                                                                            ')
                     print('Vous mourrez du DIVOC91 dans l\'avion')
                     print('                                                                                            ')
@@ -420,6 +447,8 @@ Comment allez-vous gérer la crise ?"""
                 break
 
     Epidemie(sante, inventaire)
+
+    ### 5EME ÉTAPE DU JEU (SI GUYANE) : BREUVAGE ###
 
     def Breuvage(sante, inventaire):
 
@@ -441,7 +470,10 @@ Acceptes tu ce breuvage  ?"""
         while 1:
             reponse = input('->')
             if reponse == 'oui':
-                sante = sante - degat 
+                sante = sante - degat
+                print('                                                                                      ')
+                print('Vous perdez', degat, ' points de vie')
+                print('Il vous reste', sante, ' points de vie.')
                 print('                                                                                            ')
                 print('Le beuvrage était trop spicy, les toilettes n\'ont pas survécu... et vous non plus')
                 print('                                                                                            ')
@@ -461,6 +493,8 @@ Acceptes tu ce breuvage  ?"""
                 break
 
     Breuvage(sante, inventaire)
+
+    ### DERNIERE ÉTAPE DU JEU (SI GUYANE) : FUSÉE ###
 
     def Fusée(sante, iventaire):
 
@@ -505,7 +539,8 @@ de la population des guerres et des tsunamis qui ravagent Erret."""
                 sys.stdout.flush()
                 time.sleep(0.03)
             sante = sante - degat
-            print(sante)
+            print('Vous perdez', degat, ' points de vie')
+            print('Il vous reste', sante, ' points de vie.')
             if sante == 0:
                 print('                                                                                            ')
                 print('Vous avez perdu...')
@@ -513,6 +548,8 @@ de la population des guerres et des tsunamis qui ravagent Erret."""
                 mainMenu()
     
     Fusée(sante, inventaire)
+
+    ### DERNIERE ÉTAPE DU JEU ###
     
     def Findejeu(sante, inventaire):
     
@@ -548,7 +585,8 @@ Vous-êtes désormais face à un choix crucial:"""
                     sys.stdout.flush()
                     time.sleep(0.03)
                 sante = sante - degat
-                print(sante)
+                print('Vous perdez', degat, ' points de vie')
+                print('Il vous reste', sante, ' points de vie.')
                 if sante == 0:
                     print('                                                                                            ')
                     print('Vous avez perdu...')
