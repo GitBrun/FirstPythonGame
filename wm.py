@@ -5,13 +5,12 @@
 # How to play
 
 # Commenter le code 
-# Nomenclature uniforme dans tout le code
 # Nom joueur
 # Uniforme TU et VOUS
 # oui or Oui
 # play or Play etc
 
-### IMPORT THE NECESSARY LIBRAIRIES
+### IMPORTATION DES LIBRAIRIES 
 
 import cmd
 import textwrap
@@ -48,6 +47,7 @@ def about():
     elif reponse == 'Leave':
         sys.exit()
     while reponse not in ['Play', 'About', 'Leave']:
+        print('                                      ')
         print("Commande invalide, veuillez réessayer.")
         reponse = input('-> ')
         if reponse == 'Menu':
@@ -73,6 +73,7 @@ def mainMenuOptions():
     elif reponse == 'Leave':
         sys.exit()  
     while reponse not in ['Play', 'About', 'Leave']:
+        print('                                      ')
         print("Commande invalide, veuillez réessayer.")
         reponse = input('-> ')
         if reponse == 'Play':
@@ -111,6 +112,7 @@ Entrez votre prénom :"""
         time.sleep(0.03)
     print('                                                                                      ')
     print('======================================================================================')
+    print('                                                                                      ')
     nomJoueur = input('-> ')
     textPrenom = "Votre enfance est plutôt atypique ", nomJoueur, "."
     for char in textPrenom:
@@ -168,6 +170,7 @@ Bonne chance !"""
                     while allumettes>0:
                         joueur=-1
                         while joueur<1 or joueur>3 or joueur>allumettes:
+                            print('                                                                                      ')
                             joueur=int(input('Combien d\'allumettes prends tu ?')) 
                         allumettes=allumettes-joueur
                         if allumettes==0:
@@ -241,12 +244,14 @@ informations sur Verland qui pourront vous faire monter en grade."""
             time.sleep(0.03)
         print('                                                                                      ')
         print('======================================================================================')
+        print('                                                                                      ')
         while 1:
             print('Alors ', nomJoueur, ' acceptez-vous cette alliance ?')
             reponse = input('-> ')
             if reponse == 'oui':
                 print('                                                                                            ')
                 textTrahison = """Trahison, guerre, votre pays vous exécute pour avoir livré des informations au pays ennemi !"""
+                print('                                                                                            ')
                 for char in textTrahison:
                     sys.stdout.write(char)
                     sys.stdout.flush()
@@ -254,7 +259,9 @@ informations sur Verland qui pourront vous faire monter en grade."""
                 sante = (sante - degat)
                 print(sante)
                 if sante == 0:
+                    print('                                                                                            ')
                     print('Vous êtes affaibli...')
+                    print('                                                                                            ')
                     Proposition(sante, inventaire)
             elif reponse == 'non':
                 textMasque = """Vous restez fidèle à votre pays et vous continuez votre carrière !
@@ -264,7 +271,7 @@ Le président vous remercie d\'avoir refusé cette alliance en vous offrant un m
                     sys.stdout.flush()
                     time.sleep(0.03)
                 inventaire.append('masque')
-                print(inventaire)
+                print('Vous possédez maintenant dans votre inventaire : ', inventaire)
             else:
                 print('Erreur: répondez par oui ou non.')
             if reponse == 'oui' or reponse == 'non':
@@ -295,10 +302,12 @@ Avec corruption certes, mais vous serez directement à la tête du pays."""
         while 1:
             print('                                                                                     ')
             print('Alors, que décidez-vous', nomJoueur, ' ? Devenez-vous premier ministre ou président ?')
+            print('                                                                                     ')
             reponse = input('-> ')
             if reponse == 'premier ministre':
                 print('                                                                        ')
                 print('Vous devenez premier ministre et vous avez de nouvelles responsabilités.')
+                print('                                                                        ')
             elif reponse == 'président':
                 textManif = """Vous devenez président, votre mandat ne s\'annonce pas de tout repos...
 Une manifestation violente est annoncée par des opposants soupçonnant la corruption...
@@ -309,19 +318,26 @@ Quittez vous le lotipac ?"""
                     time.sleep(0.03)
                 reponse = input('-> ')
                 if reponse == 'oui':
+                    print('                                                                                            ')
                     print('Vous mourrez en allant en voiture à l\'aeroport.')
+                    print('                                                                                            ')
                     sante = sante - degat
                     print(sante)
                     if sante == 0:
+                        print('                                                                                            ')
                         print('Vous avez perdu...')
+                        print('                                                                                            ')
                         mainMenu()
                 elif reponse == 'non':
+                    print('                                                                                            ')
                     print('Les opposants parviennent à entrer dans le lotipac et la situation est hors de contrôle.')
                     print('Vous mourrez submergé par la foule.')
+                    print('                                                                                            ')
                     sante = sante - degat
                     print(sante)
                     if sante == 0:
                         print('Vous avez perdu...')
+                        print('                                                                                            ')
                         mainMenu()
                 else:
                     print('Erreur: répondez par oui ou non.')
@@ -352,22 +368,51 @@ Comment allez-vous gérer la crise ?"""
         print('                                                                                      ')
         print('======================================================================================')
         while 1:
+            print('                                                                                            ')
             print('Décidez-vous de prendre des mesures sanitaires ou partez-vous en Guyane ?')
             reponse = input('-> ')
             if reponse == 'mesures':
                 sante = sante + regen
+                print('                                                                                            ')
                 print('Vous prenez des mesures sanitaires pour limiter la crise. Le peuple vous est reconaissant.')
+                print('                                                                                            ')
                 print(sante)
             elif reponse == 'fuir':
                 if 'masque' in inventaire :
-                    print("Heureusement que vous avez un masque, cela vous permet de survivre au vol.")
-                    break
+                    print('                                                                                            ')
+                    print('Voulez-vous mettre le masque dans l\'avion ?')
+                    print('                                                                                            ')
+                    reponse = input('-> ')
+                    if reponse == 'oui':
+                        print('                                                                                            ')
+                        print("Heureusement que vous avez un masque, cela vous permet de survivre au vol.")
+                        print('                                                                                            ')
+                        inventaire.remove('masque')
+                        print('Vous possédez maintenant dans votre inventaire : ', inventaire)
+                        print('                                                                                            ')
+                        break
+                    elif reponse == 'non':
+                        sante = sante - degat
+                        print('                                                                                            ')
+                        print('Vous mourrez du DIVOC91 dans l\'avion')
+                        print('                                                                                            ')
+                    if sante == 0:
+                        print('                                                                                            ')
+                        print('Vous avez perdu...')
+                        print('                                                                                            ')
+                        mainMenu()
+                    else:
+                        print('Erreur: répondez par oui ou non.')
                 else:
                     sante = sante - degat
+                    print('                                                                                            ')
                     print('Vous mourrez du DIVOC91 dans l\'avion')
+                    print('                                                                                            ')
                     print(sante)
                 if sante == 0:
+                    print('                                                                                            ')
                     print('Vous avez perdu...')
+                    print('                                                                                            ')
                     mainMenu()
             else:
                 print('Erreur: répondez par mesures ou par fuir')
@@ -397,13 +442,19 @@ Acceptes tu ce breuvage  ?"""
             reponse = input('->')
             if reponse == 'oui':
                 sante = sante - degat 
+                print('                                                                                            ')
                 print('Le beuvrage était trop spicy, les toilettes n\'ont pas survécu... et vous non plus')
+                print('                                                                                            ')
                 print(sante)
                 if sante == 0 :
+                    print('                                                                                            ')
                     print('Vous avez perdu')
+                    print('                                                                                            ')
                     mainMenu()
             elif reponse == 'non':
+                print('                                                                                            ')
                 print('Vous avez bien fait, le mélange opaque n\'était pas rassurant.')
+                print('                                                                                            ')
             else:
                 print('Erreur: répondez par oui ou non.')
             if reponse == 'oui' or reponse == 'non':
@@ -431,6 +482,7 @@ Vous arrivez sur le lieu de décollage, la sécurité vous interpelle:"""
         print('Bonjour, ', nomJoueur, ' avez-vous un diplôme ?')
         print('                                                                                      ')
         print('======================================================================================')
+        print('                                                                                            ')
         if 'diplôme' in inventaire:
             textDiplôme = """Merci, vous pouvez monter à bord.
 Votre diplôme vous permet de rejoindre Nole Ksum dans la fusée et de vous en aller.
@@ -442,6 +494,7 @@ Vous êtes acceuillis et devenez président suprême de Sram. Tout vous réussi.
                 time.sleep(0.03)
             print('                                                                                      ')
             print('======================================================================================')
+            print('                                                                                            ')
             print('$$$ BRAVO ', nomJoueur, 'YOU WIN $$$')
         elif 'diplôme' not in inventaire:
             textPasDiplôme = """Je suis désolé monsieur, sans diplôme on peut pas vous faire rentrer.
@@ -454,7 +507,9 @@ de la population des guerres et des tsunamis qui ravagent Erret."""
             sante = sante - degat
             print(sante)
             if sante == 0:
+                print('                                                                                            ')
                 print('Vous avez perdu...')
+                print('                                                                                            ')
                 mainMenu()
     
     Fusée(sante, inventaire)
@@ -482,7 +537,9 @@ Vous-êtes désormais face à un choix crucial:"""
         print('                                                                                      ')
         print('======================================================================================')
         while 1:
+            print('                                                                                            ')
             print('Restez-vous sur Erret ou fuyez-vous sur Sram avec Nole ?')
+            print('                                                                                            ')
             reponse = input('-> ')
             if reponse == 'Erret':
                 textErret = """Vous mourrez avec 95 pour cent de la population des guerres et des tsunamis qui ravagent Erret."""
@@ -493,7 +550,9 @@ Vous-êtes désormais face à un choix crucial:"""
                 sante = sante - degat
                 print(sante)
                 if sante == 0:
+                    print('                                                                                            ')
                     print('Vous avez perdu...')
+                    print('                                                                                            ')
                     mainMenu()
                 return
             elif reponse == 'Sram':
