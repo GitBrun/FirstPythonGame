@@ -374,7 +374,7 @@ Quittez vous le lotipac ?"""
         degat = int()
         regen = int()
         degat = 100
-        regen = 100
+        regen = 50
     
         print('======================================================================================')
         print('                                                                                      ')
@@ -399,6 +399,57 @@ Comment allez-vous gérer la crise ?"""
                 print('Vous gagnez', regen, ' points de vie')
                 print('Il vous reste', sante, ' points de vie.')
                 print('                                                                                            ')
+                print('======================================================================================')
+                print('                                                                                      ')
+                textFinJeu = """Après avoir tout essayé pour gérer la crise sanitaire,
+la situation semble inéluctable et la ruine semble être le destin d\'Erret...
+Plusieurs virus et catastrophes climatiques surviennent après le DIVOC 91
+Cependant, Nole Ksum, un entrepreneur célèbre vous propose au vu de la situation.
+de partir en secret avec une partie de l’humanité sur la planète Sram.
+D\'un côté, vous pouvez conquérir une nouvelle planète tandis que de l\'autre,
+la population vous exhorte de rester pour lutter contre la fin du monde.
+Vous-êtes désormais face à un choix crucial:"""
+                for char in textFinJeu:
+                    sys.stdout.write(char)
+                    sys.stdout.flush()
+                    time.sleep(0.03)
+                print('                                                                                      ')
+                print('======================================================================================')
+                while 1:
+                    print('                                                                                            ')
+                    print('Restez-vous sur Erret ou fuyez-vous sur Sram avec Nole ?')
+                    print('                                                                                            ')
+                    reponse = input('-> ')
+                    if reponse == 'Erret':
+                        textErret = """Vous mourrez avec 95 pour cent de la population des guerres et des tsunamis qui ravagent Erret."""
+                        for char in textErret:
+                            sys.stdout.write(char)
+                            sys.stdout.flush()
+                            time.sleep(0.03)
+                        sante = sante - 150
+                        print('Vous perdez 150 points de vie')
+                        print('Il vous reste', sante, ' points de vie.')
+                        if sante == 0:
+                            print('                                                                                            ')
+                            print('Vous avez perdu...')
+                            print('                                                                                            ')
+                            mainMenu()
+                        return
+                    elif reponse == 'Sram':
+                        textSram = """Vous constatez en arrivant sur Sram qu’une civilisation est déjà développé et installée.
+Vous êtes acceuillis et devenez président suprême de Sram. Tout vous réussi."""
+                        for char in textSram:
+                            sys.stdout.write(char)
+                            sys.stdout.flush()
+                            time.sleep(0.03)
+                        print('                                                                                      ')
+                        print('======================================================================================')
+                        print('$$$ BRAVO ', nomJoueur, 'YOU WIN $$$')
+                        mainMenu()
+                    else:
+                        print('Erreur : répondez par Erret ou Sram')
+                    if reponse == 'Erret' or reponse == 'Sram':
+                        break
             elif reponse == 'fuir':
                 if 'masque' in inventaire :
                     print('                                                                                            ')
@@ -530,6 +581,7 @@ Vous êtes acceuillis et devenez président suprême de Sram. Tout vous réussi.
             print('======================================================================================')
             print('                                                                                            ')
             print('$$$ BRAVO ', nomJoueur, 'YOU WIN $$$')
+            mainMenu()
         elif 'diplôme' not in inventaire:
             textPasDiplôme = """Je suis désolé monsieur, sans diplôme on peut pas vous faire rentrer.
 Vous êtes contraint de rester sur Erret et mourrez un an plus tard avec 95 pour cent 
@@ -548,67 +600,6 @@ de la population des guerres et des tsunamis qui ravagent Erret."""
                 mainMenu()
     
     Fusée(sante, inventaire)
-
-    ### DERNIERE ÉTAPE DU JEU ###
-    
-    def Findejeu(sante, inventaire):
-    
-        reponse = str()
-        degat = int()
-        degat = 100
-    
-        print('======================================================================================')
-        print('                                                                                      ')
-        textFinJeu = """Après avoir tout essayé pour gérer la crise sanitaire,
-la situation semble inéluctable et la ruine semble être le destin d\'Erret...
-Plusieurs virus et catastrophes climatiques surviennent après le DIVOC 91
-Cependant, Nole Ksum, un entrepreneur célèbre vous propose au vu de la situation.
-de partir en secret avec une partie de l’humanité sur la planète Sram.
-D\'un côté, vous pouvez conquérir une nouvelle planète tandis que de l\'autre,
-la population vous exhorte de rester pour lutter contre la fin du monde.
-Vous-êtes désormais face à un choix crucial:"""
-        for char in textFinJeu:
-            sys.stdout.write(char)
-            sys.stdout.flush()
-            time.sleep(0.03)
-        print('                                                                                      ')
-        print('======================================================================================')
-        while 1:
-            print('                                                                                            ')
-            print('Restez-vous sur Erret ou fuyez-vous sur Sram avec Nole ?')
-            print('                                                                                            ')
-            reponse = input('-> ')
-            if reponse == 'Erret':
-                textErret = """Vous mourrez avec 95 pour cent de la population des guerres et des tsunamis qui ravagent Erret."""
-                for char in textErret:
-                    sys.stdout.write(char)
-                    sys.stdout.flush()
-                    time.sleep(0.03)
-                sante = sante - degat
-                print('Vous perdez', degat, ' points de vie')
-                print('Il vous reste', sante, ' points de vie.')
-                if sante == 0:
-                    print('                                                                                            ')
-                    print('Vous avez perdu...')
-                    print('                                                                                            ')
-                    mainMenu()
-                return
-            elif reponse == 'Sram':
-                textSram = """Vous constatez en arrivant sur Sram qu’une civilisation est déjà développé et installée.
-Vous êtes acceuillis et devenez président suprême de Sram. Tout vous réussi."""
-                for char in textSram:
-                    sys.stdout.write(char)
-                    sys.stdout.flush()
-                    time.sleep(0.03)
-                print('                                                                                      ')
-                print('======================================================================================')
-                print('$$$ BRAVO ', nomJoueur, 'YOU WIN $$$')
-            else:
-                print(' Il n\'y a que deux choix possibles')
-            if reponse == 'Erret' or reponse == 'Sram':
-                break
-    
-    Findejeu(sante, inventaire)
     
 mainMenu()
 
