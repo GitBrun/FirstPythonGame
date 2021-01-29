@@ -427,8 +427,10 @@ Vous-êtes désormais face à un choix crucial:"""
                             sys.stdout.flush()
                             time.sleep(0.03)
                         sante = sante - 150
+                        print('                                                                                           ')
                         print('Vous perdez 150 points de vie')
                         print('Il vous reste', sante, ' points de vie.')
+                        print('                                                                                           ')
                         if sante == 0:
                             print('                                                                                            ')
                             print('Vous avez perdu...')
